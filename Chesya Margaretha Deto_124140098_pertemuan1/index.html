@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kasir Mini POS</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- Header aplikasi -->
+	<header class="header">
+		<div>
+			<h1>Kasir Mini POS</h1>
+			<p>Sistem Kasir Sederhana</p>
+		</div>
+	</header>
+
+	<!-- Form barang dan area transaksi -->
+	<main class="konten-utama">
+		<section class="panel panel-form" aria-labelledby="judul-tambah-barang">
+			<h2 id="judul-tambah-barang">Tambah Barang</h2>
+			<form id="form-barang">
+				<div class="form-group">
+					<label for="nama-barang">Nama Barang</label>
+					<input type="text" id="nama-barang" name="nama-barang">
+					<small id="error-nama" class="pesan-error"></small>
+				</div>
+				<div class="form-group">
+					<label for="harga-barang">Harga Satuan</label>
+					<input type="number" id="harga-barang" name="harga-barang" min="0">
+					<small id="error-harga" class="pesan-error"></small>
+				</div>
+				<div class="form-group">
+					<label for="qty-barang">Jumlah</label>
+					<input type="number" id="qty-barang" name="qty-barang" min="1">
+					<small id="error-qty" class="pesan-error"></small>
+				</div>
+				<button type="submit" class="tombol tombol-utama">Tambah ke Keranjang</button>
+			</form>
+		</section>
+
+		<section class="panel panel-keranjang" aria-labelledby="judul-keranjang">
+			<h2 id="judul-keranjang">Keranjang Belanja</h2>
+			<div class="wadah-tabel">
+				<table>
+					<thead>
+						<tr>
+							<th scope="col">No</th>
+							<th scope="col">Nama Barang</th>
+							<th scope="col">Harga</th>
+							<th scope="col">Qty</th>
+							<th scope="col">Subtotal</th>
+							<th scope="col">Aksi</th>
+						</tr>
+					</thead>
+					<tbody id="tabel-keranjang"></tbody>
+				</table>
+			</div>
+			<p id="keranjang-kosong" class="keranjang-kosong">Keranjang masih kosong.</p>
+
+			<!-- Ringkasan total transaksi -->
+			<div class="ringkasan-transaksi">
+				<div><span>Total Belanja</span><strong id="total-belanja">Rp0</strong></div>
+				<div><span>Diskon</span><strong id="jumlah-diskon">Rp0</strong></div>
+				<div class="total-akhir"><span>Total Akhir</span><strong id="total-akhir">Rp0</strong></div>
+			</div>
+
+			<!-- Pembayaran transaksi -->
+			<div class="bagian-pembayaran">
+				<div class="form-group">
+					<label for="uang-bayar">Uang Bayar</label>
+					<input type="number" id="uang-bayar" name="uang-bayar" min="0">
+				</div>
+				<p class="hasil-pembayaran">Kembalian: <strong id="hasil-kembalian">Rp0</strong></p>
+				<div class="aksi-transaksi">
+					<button type="button" class="tombol tombol-utama">Proses Pembayaran</button>
+					<button type="button" id="reset-transaksi" class="tombol tombol-sekunder">Reset Transaksi</button>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<script src="script.js"></script>
+</body>
+</html>
