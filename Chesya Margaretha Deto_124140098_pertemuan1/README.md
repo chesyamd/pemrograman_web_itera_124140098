@@ -4,14 +4,12 @@
 
 - **Nama:** Chesya Margaretha Deto
 - **NIM:** 124140098
-- **Kelas Praktikum:** RA
-- **Mata Kuliah:** Pemrograman Web
+- **Kelas Praktikum:** RB
+- **Mata Kuliah:** Pengembangan Aplikasi Web
 
 ## Deskripsi
 
-Kasir Mini POS merupakan aplikasi kasir sederhana berbasis HTML, CSS, dan JavaScript. Aplikasi ini digunakan untuk menambahkan barang ke dalam keranjang, menghitung total belanja, memberikan diskon otomatis, memproses pembayaran, serta menghitung kembalian.
-
-Data keranjang juga disimpan menggunakan localStorage sehingga data tetap tersedia ketika halaman dimuat kembali.
+Kasir Mini POS merupakan aplikasi kasir sederhana berbasis HTML, CSS, dan JavaScript. Aplikasi ini digunakan untuk menambahkan barang ke dalam keranjang, menghitung total belanja, memberikan diskon otomatis, memproses pembayaran, serta menghitung kembalian. Data keranjang juga disimpan menggunakan localStorage sehingga data tetap tersedia ketika halaman dimuat kembali.
 
 ## Fitur
 
