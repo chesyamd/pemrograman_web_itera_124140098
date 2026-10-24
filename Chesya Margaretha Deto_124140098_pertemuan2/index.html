@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal To-Do Dashboard</title>
+    <meta
+      name="description"
+      content="Dashboard agenda pribadi, jadwal kelas, dan cuaca Bandar Lampung."
+    />
+    <link rel="stylesheet" href="components.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Personal Dashboard</p>
+          <h1 id="greetingText">Chesya Margaretha Deto</h1>
+        </div>
+        <div class="today-box" aria-live="polite">
+          <span class="label">Hari ini</span>
+          <strong id="todayDateText">-</strong>
+        </div>
+      </header>
+
+      <main class="dashboard-layout">
+        <section class="summary-grid" aria-label="Ringkasan agenda">
+          <article class="summary-card">
+            <span class="summary-label">Agenda aktif</span>
+            <strong id="activeSummary">0</strong>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">Selesai</span>
+            <strong id="completedSummary">0</strong>
+          </article>
+          <article class="summary-card warning-card">
+            <span class="summary-label">Terlambat</span>
+            <strong id="lateSummary">0</strong>
+          </article>
+        </section>
+
+        <section class="utility-grid" aria-label="Cuaca">
+          <div class="weather-card" aria-live="polite">
+            <div class="weather-header">
+              <div>
+                <p class="section-kicker">Cuaca</p>
+                <h2>Bandar Lampung</h2>
+              </div>
+              <button id="refreshWeatherBtn" class="secondary-btn" type="button">Refresh</button>
+            </div>
+            <div id="weatherState" class="weather-state loading">
+              <p>Memuat data cuaca...</p>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="panel" aria-labelledby="todayHeading">
+          <div class="panel-header">
+            <div>
+              <p class="section-kicker">Agenda</p>
+              <h2 id="todayHeading">Hari Ini</h2>
+            </div>
+          </div>
+          <div id="todayAgendaList" class="list-stack"></div>
+        </section>
+
+        <section class="panel" aria-labelledby="weeklyScheduleHeading">
+          <div class="panel-header">
+            <div>
+              <p class="section-kicker">Jadwal</p>
+              <h2 id="weeklyScheduleHeading">Jadwal Kelas</h2>
+            </div>
+          </div>
+          <div id="weeklySchedule" class="weekly-grid"></div>
+        </section>
+
+        <section class="panel form-panel" aria-labelledby="formHeading">
+          <div class="panel-header form-header">
+            <div>
+              <p class="section-kicker">Kelola</p>
+              <h2 id="formHeading">Tambah atau Edit Agenda</h2>
+            </div>
+          </div>
+
+          <form id="taskForm" class="task-form">
+            <input type="hidden" id="taskId" />
+
+            <div class="field-group">
+              <label for="taskTitle">Nama agenda</label>
+              <input id="taskTitle" name="taskTitle" type="text" maxlength="80" required placeholder="Contoh: Laporan praktikum" />
+            </div>
+
+            <div class="field-row two-col">
+              <div class="field-group">
+                <label for="taskCategory">Kategori</label>
+                <select id="taskCategory" name="taskCategory">
+                  <option value="Kuliah">Kuliah</option>
+                  <option value="Organisasi">Organisasi</option>
+                  <option value="Pribadi">Pribadi</option>
+                  <option value="Lainnya">Lainnya</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="taskDate">Tanggal agenda</label>
+                <input id="taskDate" name="taskDate" type="date" />
+              </div>
+            </div>
+
+            <div class="field-row two-col">
+              <div class="field-group">
+                <label for="taskTime">Waktu</label>
+                <input id="taskTime" name="taskTime" type="time" />
+              </div>
+              <div class="field-group">
+                <label for="taskStatus">Status</label>
+                <select id="taskStatus" name="taskStatus">
+                  <option value="active">Belum selesai</option>
+                  <option value="completed">Selesai</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="taskNotes">Catatan</label>
+              <textarea id="taskNotes" name="taskNotes" rows="3" placeholder="Catatan tambahan atau detail agenda"></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button class="primary-btn" type="submit" id="submitTaskBtn">Simpan Agenda</button>
+              <button class="secondary-btn hidden" type="button" id="cancelEditBtn">Batal</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel" aria-labelledby="tasksHeading">
+          <div class="panel-header">
+            <div>
+              <p class="section-kicker">Daftar</p>
+              <h2 id="tasksHeading">Daftar Agenda</h2>
+            </div>
+            <select id="dueDateFilter" class="due-date-filter" aria-label="Filter waktu agenda">
+              <option value="all">Semua tanggal</option>
+              <option value="due-window">H-3 sampai Hari H</option>
+            </select>
+          </div>
+          <div id="taskList" class="list-stack"></div>
+        </section>
+
+      </main>
+    </div>
+
+    <div id="deleteModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="true"></div>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+        <div class="modal-icon" aria-hidden="true">🗑️</div>
+        <h3 id="deleteModalTitle">Hapus agenda?</h3>
+        <p id="deleteModalText">Agenda akan dihapus permanen.</p>
+        <div class="modal-actions">
+          <button class="secondary-btn" id="cancelDeleteBtn" type="button">Batal</button>
+          <button class="danger-btn" id="confirmDeleteBtn" type="button">Hapus</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
