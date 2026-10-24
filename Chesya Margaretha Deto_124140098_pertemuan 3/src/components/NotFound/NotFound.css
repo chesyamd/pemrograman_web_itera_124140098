@@ -1,0 +1,30 @@
+.not-found {
+  text-align: center;
+  padding: 60px 16px;
+  max-width: 430px;
+  margin: 0 auto;
+}
+
+.not-found-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.not-found-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.not-found-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.not-found-btn {
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+}

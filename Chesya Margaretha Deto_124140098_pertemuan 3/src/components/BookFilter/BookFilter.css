@@ -1,0 +1,21 @@
+.book-filter {
+  margin-bottom: 14px;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(160, 196, 255, 0.15);
+}
