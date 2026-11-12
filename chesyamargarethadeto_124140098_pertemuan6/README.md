@@ -4,8 +4,8 @@
 
 - **Nama:** Chesya Margaretha Deto
 - **NIM:** 124140098
-- **Kelas:** RB — Praktikum Pengembangan Aplikasi Web, Teknik Informatika ITERA
-- **Pertemuan:** 6 — Pyramid Framework
+- **Kelas:** RB 
+- **Pertemuan:** 6 
 
 ## Deskripsi
 
